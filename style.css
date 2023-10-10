@@ -1,0 +1,22 @@
+#form1 {
+  width: 500px;
+  height: 200px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 20px 100px;
+}
+.div1 {
+  display: flex;
+  justify-content: space-between;
+}
+input {
+  width: 350px;
+}
+#submit {
+  width: 355px;
+  font-size: 17px;
+  cursor: pointer;
+  margin: 0 144px;
+}
