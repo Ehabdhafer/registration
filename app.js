@@ -42,28 +42,28 @@ document.getElementById("submit").addEventListener("click", function () {
       console.error(`${errorCode}: ${errorMessage}`);
     });
 
-  function validateUsername(name) {
-    return /^\S+$/.test(name);
+  function validateUsername(username) {
+    return /^\S+$/.test(username);
   }
 
-  function validatePassword(pass) {
-    return /^(?=.\d)(?=.[A-Z])(?=.*\W).{8,}$/.test(pass);
+  function validatePassword(password) {
+    return /^(?=.\d)(?=.[A-Z])(?=.*\W).{8,}$/.test(password);
   }
 
   function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+.[^\s@]+$/.test(email);
   }
 
-  function validatePhone(phone) {
-    return /^07\d{8}$/.test(phone);
+  function validatePhone(phoneNumber) {
+    return /^07\d{8}$/.test(phoneNumber);
   }
 
-  if (!validateUsername(name)) {
+  if (!validateUsername(username)) {
     alert("name must not contain spaces");
     return;
   }
 
-  if (!validatePassword(pass)) {
+  if (!validatePassword(password)) {
     alert(
       "Invalid password. It must be at least 8 characters have atlest 1 uppercase and 1 special character"
     );
@@ -75,7 +75,7 @@ document.getElementById("submit").addEventListener("click", function () {
     return;
   }
 
-  if (!validatePhone(phone)) {
+  if (!validatePhone(phoneNumber)) {
     alert("phone number must start with 07 and have 10 digits");
     return;
   }
