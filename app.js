@@ -41,123 +41,44 @@ document.getElementById("submit").addEventListener("click", function () {
       const errorMessage = error.message;
       console.error(`${errorCode}: ${errorMessage}`);
     });
+
+  function validateUsername(name) {
+    return /^\S+$/.test(name);
+  }
+
+  function validatePassword(pass) {
+    return /^(?=.\d)(?=.[A-Z])(?=.*\W).{8,}$/.test(pass);
+  }
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+.[^\s@]+$/.test(email);
+  }
+
+  function validatePhone(phone) {
+    return /^07\d{8}$/.test(phone);
+  }
+
+  if (!validateUsername(name)) {
+    alert("name must not contain spaces");
+    return;
+  }
+
+  if (!validatePassword(pass)) {
+    alert(
+      "Invalid password. It must be at least 8 characters have atlest 1 uppercase and 1 special character"
+    );
+    return;
+  }
+
+  if (!validateEmail(email)) {
+    alert("wrong email format ");
+    return;
+  }
+
+  if (!validatePhone(phone)) {
+    alert("phone number must start with 07 and have 10 digits");
+    return;
+  }
 });
 
 // -----------------------------------------------------------------
-
-// Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
-// ------------------------------------------------------------------------
-// Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
-
-// firebase.initializeApp(firebaseConfig);
-
-// const auth = firebase.auth()
-// const database = firebase.database()
-
-// function register(){
-//   email = document.getElementById("email").value
-//   pass = document.getElementById("pass").value
-//   name = document.getElementById("name").value
-//   phone = document.getElementById("phone").value
-// }
-
-// auth.createUserWithEmailAndPassword(email, pass)
-// .then(function(){
-//   var user = auth.currentUser
-//   var database_ref = database.ref()
-//   var user_data = {
-//     email : email,
-//     pass : pass,
-//     name : name,
-//     phone : phone
-//     last_login : Date.now()
-//   }
-
-// })
-
-// const db = firebase.firestore();
-// const docRef = db.collection("users").doc();
-// docRef.set({
-//   username: req.body.name,
-//   password: req.body.pass,
-//   email: req.body.email,
-//   phone: req.body.phone,
-// });
-// docRef.save();
-
-// const express = require("express");
-// const expressFirebase = require("express-firebase");
-// expressFirebase.initializeApp(app, firebaseConfig);
-
-// app.post("/submit-form", async (req, res) => {
-//   const userRef = expressFirebase.firestore().collection("users").doc();
-//   await userRef.set({
-//     name: req.body.name,
-//     pass: req.body.pass,
-//     email: req.body.email,
-//     phone: req.body.phone,
-//   });
-
-//   res.send("Account created successfully!");
-// });
-
-// app.listen(3000, () => {
-//   console.log("Server listening on port 3000");
-// });
-// ---------------------------------------------------------------------
-// var database = firebase.database();
-
-// function save() {
-//   var name = document.getElementById("name").value;
-//   var pass = document.getElementById("pass").value;
-//   var email = document.getElementById("email").value;
-//   var phone = document.getElementById("phone").value;
-
-//   database.ref("users/" + name).set({
-//     name: name,
-//     pass: pass,
-//     email: email,
-//     phone: phone,
-//   });
-//   alert("saved");
-// }
-
-// ----------------------------------------------------------------------
-// ----------------------------------------------------------------------
-
-// const validationRules = {
-//   name: {
-//     pattern: /^[a-zA-Z0-9]+[a-zA-Z0-9-]*[a-zA-Z0-9]$/,
-//     minLength: 3,
-//   },
-// };
-
-// // Get the values of the input fields that you want to validate.
-// const nameInput = document.querySelector("#name");
-
-// // Apply your validation rules to the input field values.
-// if (!validationRules.name.pattern.test(nameInput.value)) {
-//   // Display an error message to the user.
-//   alert("Please enter a valid name.");
-// }
-
-// const form = document.querySelector("form");
-// form.addEventListener("submit", (event) => {
-//   // Validate the form input.
-//   const isValid = validateForm();
-
-//   // If the input is invalid, prevent the form from submitting.
-//   if (!isValid) {
-//     event.preventDefault();
-//   }
-// });
